@@ -2,26 +2,19 @@ import React, { Component } from "react";
 
 class TableBody extends Component {
   render() {
+    const { columns, data } = this.props;
     return (
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {data.map((entry) => {
+          return (
+            <tr>
+              {columns.map((c) => {
+                if (c.path) return <td>{entry[c.path]}</td>;
+                else return <td>{c.content()}</td>;
+              })}
+            </tr>
+          );
+        })}
       </tbody>
     );
   }

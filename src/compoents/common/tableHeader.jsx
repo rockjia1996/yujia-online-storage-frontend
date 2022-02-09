@@ -2,13 +2,24 @@ import React, { Component } from "react";
 
 class TableHeader extends Component {
   render() {
+    const { columns } = this.props;
     return (
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First(1)</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          {columns.map((c) => {
+            if (c.path)
+              return (
+                <th key={c.path} scope="col">
+                  {c.label}
+                </th>
+              );
+            else
+              return (
+                <th key={c.key} scope="col">
+                  {}
+                </th>
+              );
+          })}
         </tr>
       </thead>
     );
