@@ -12,6 +12,12 @@ const data = [
   { filename: "someTest11.txt", date: Date.now(), size: 11 },
   { filename: "someTest12.txt", date: Date.now(), size: 12 },
   { filename: "someTest13.txt", date: Date.now(), size: 13 },
+  { filename: "app.txt", date: Date.now(), size: 13 },
+  { filename: "apple.txt", date: Date.now(), size: 13 },
+  { filename: "application.txt", date: Date.now(), size: 13 },
+  { filename: "applicant.txt", date: Date.now(), size: 13 },
+  { filename: "approval.txt", date: Date.now(), size: 13 },
+  { filename: "appointment.txt", date: Date.now(), size: 13 },
 ];
 
 export function getData() {
