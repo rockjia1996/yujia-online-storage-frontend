@@ -10,7 +10,7 @@ class TableBody extends Component {
             <tr>
               {columns.map((c) => {
                 if (c.path) return <td>{entry[c.path]}</td>;
-                else return <td>{c.content()}</td>;
+                else return <td>{c.content(entry.filename)}</td>;
               })}
             </tr>
           );

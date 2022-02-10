@@ -1,53 +1,69 @@
 import React, { Component } from "react";
+import { paginate } from "../utils/paginate";
 import Pagination from "./common/pagination";
 import StorageTable from "./storageTable";
-
+import _ from "lodash";
+import { getData } from "../service/fakeBackendService";
+import NavBar from "./navbar";
 class Storage extends Component {
   state = {
-    data: [
-      { filename: "someTest1.txt", date: Date.now(), size: 1 },
-      { filename: "someTest2.txt", date: Date.now(), size: 2 },
-      { filename: "someTest3.txt", date: Date.now(), size: 3 },
-      { filename: "someTest4.txt", date: Date.now(), size: 4 },
-      { filename: "someTest5.txt", date: Date.now(), size: 5 },
-      { filename: "someTest6.txt", date: Date.now(), size: 6 },
-      { filename: "someTest7.txt", date: Date.now(), size: 7 },
-      { filename: "someTest8.txt", date: Date.now(), size: 8 },
-      { filename: "someTest9.txt", date: Date.now(), size: 9 },
-      { filename: "someTest10.txt", date: Date.now(), size: 10 },
-      { filename: "someTest11.txt", date: Date.now(), size: 11 },
-      { filename: "someTest12.txt", date: Date.now(), size: 12 },
-      { filename: "someTest13.txt", date: Date.now(), size: 13 },
-    ],
-    columns: [
-      { path: "filename", label: "Name" },
-      { path: "date", label: "Last Modified" },
-      { path: "size", label: "File size" },
-      {
-        key: "delete",
-        content: () => (
-          <button className="btn btn-danger btn-sm">Delete</button>
-        ),
-      },
-      {
-        key: "download",
-        content: () => (
-          <button className="btn btn-success btn-sm">Download</button>
-        ),
-      },
-    ],
-    currentPage: 2,
+    data: [],
+    currentPage: 1,
     pageSize: 4,
+    sortColumn: { path: "filename", order: "asc" },
+  };
+
+  componentDidMount() {
+    this.setState({ data: getData() });
+  }
+
+  getPageData = () => {
+    const { pageSize, currentPage, data } = this.state;
+    const paginatedData = paginate(data, currentPage, pageSize);
+    return paginatedData;
+  };
+
+  handlePageChange = (pageNumber) => {
+    this.setState({ currentPage: pageNumber });
+  };
+
+  handleSort = (sortColumn) => {
+    const data = _.cloneDeep(this.state.data);
+    const sorted = _.orderBy(data, [sortColumn.path], [sortColumn.order]);
+
+    this.setState({ data: sorted, sortColumn: sortColumn, currentPage: 1 });
+  };
+
+  handleDelete = (filename) => {
+    const deepCloneData = _.cloneDeep(this.state.data);
+
+    // Update the UI
+    const updatedData = deepCloneData.filter(
+      (entry) => entry.filename !== filename
+    );
+
+    // TO DO: Call server
+    this.setState({ data: updatedData });
   };
 
   render() {
+    const data = this.getPageData();
+    const { sortColumn } = this.state;
+
     return (
-      <div className="container">
-        <StorageTable columns={this.state.columns} data={this.state.data} />
+      <div>
+        <NavBar />
+        <StorageTable
+          data={data}
+          sortColumn={sortColumn}
+          onDelete={this.handleDelete}
+          onSort={this.handleSort}
+        />
         <Pagination
           itemsCount={this.state.data.length}
           pageSize={this.state.pageSize}
           currentPage={this.state.currentPage}
+          onPageChange={this.handlePageChange}
         />
       </div>
     );

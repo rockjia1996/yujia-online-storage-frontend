@@ -4,10 +4,14 @@ import TableBody from "./tableBody";
 
 class Table extends Component {
   render() {
-    const { columns, data } = this.props;
+    const { columns, data, sortColumn, onSort } = this.props;
     return (
       <table className="table">
-        <TableHeader columns={columns} />
+        <TableHeader
+          columns={columns}
+          sortColumn={sortColumn}
+          onSort={onSort}
+        />
         <TableBody columns={columns} data={data} />
       </table>
     );

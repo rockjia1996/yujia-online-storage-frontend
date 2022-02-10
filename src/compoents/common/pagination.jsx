@@ -18,7 +18,12 @@ class Pagination extends Component {
                 page === currentPage ? "page-item active" : "page-item"
               }
             >
-              <a className="page-link">{page}</a>
+              <a
+                className="page-link"
+                onClick={() => this.props.onPageChange(page)}
+              >
+                {page}
+              </a>
             </li>
           ))}
         </ul>
