@@ -9,7 +9,7 @@ class Footer extends Component {
           <ul className="footer-section-list">
             <li>Project Report</li>
             <li>Source Code</li>
-            <li>Author</li>
+            <li>Developer</li>
             <li>Credit</li>
           </ul>
         </div>
@@ -21,7 +21,7 @@ class Footer extends Component {
           </ul>
         </div>
         <div className="footer-section">
-          <h3>Contact Author</h3>
+          <h3>Contact Developer</h3>
           <ul className="footer-section-list">
             <li>Phone: (314)-546-1998</li>
             <li>Email: rockjia1996@gmail.com</li>
