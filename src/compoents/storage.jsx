@@ -72,7 +72,14 @@ class Storage extends Component {
 
     return (
       <div>
-        <NavBar />
+        <NavBar
+          brandName="Mini Online Storage"
+          navLinks={{
+            Storage: "/storage",
+            Settings: "/settings",
+            Account: "/account",
+          }}
+        />
 
         <SearchBar
           value={searchInput}

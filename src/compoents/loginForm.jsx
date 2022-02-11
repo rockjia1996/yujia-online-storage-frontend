@@ -43,6 +43,10 @@ class LoginForm extends Component {
           type="password"
           onChange={this.handleChange}
         />
+
+        <div className="form-group m-4">
+          <button className="btn btn-primary">Submit</button>
+        </div>
       </form>
     );
   }
