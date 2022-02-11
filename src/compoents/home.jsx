@@ -11,10 +11,10 @@ class Home extends Component {
     return (
       <React.Fragment>
         <NavBar
-          brandName="Mini Online Storage"
+          brandName={{ name: "Mini Online Storage", url: "/" }}
           navLinks={{
             About: "/about",
-            Updates: "/update",
+            Updates: "/updates",
             Contact: "/contact",
             Login: "/login",
           }}

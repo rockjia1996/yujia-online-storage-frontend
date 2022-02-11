@@ -8,6 +8,15 @@
   min-height: 700px;
 }
 
+.login-header {
+  background: #d6e1d2;
+  padding: 60px 60px;
+  font-size: 30px;
+  height: 20vh;
+  min-height: 400px;
+  text-align: center;
+}
+
 .section {
   min-height: 600px;
   display: flex;

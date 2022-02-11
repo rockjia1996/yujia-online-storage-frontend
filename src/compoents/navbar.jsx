@@ -4,12 +4,14 @@ class NavBar extends Component {
   state = {};
   render() {
     const { brandName, navLinks } = this.props;
+    const bName = brandName.name;
+    const bUrl = brandName.url;
     const tabs = Object.keys(navLinks);
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-          {brandName}
+        <a className="navbar-brand" href={bUrl}>
+          {bName}
         </a>
         <button
           className="navbar-toggler"
