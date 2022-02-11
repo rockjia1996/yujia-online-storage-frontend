@@ -9,6 +9,9 @@ import About from "./compoents/about";
 import Updates from "./compoents/updates";
 import Contact from "./compoents/contact";
 import Register from "./compoents/register";
+import Settings from "./compoents/settings";
+import NotFoundPage from "./compoents/notFound";
+import Account from "./compoents/account";
 class App extends Component {
   state = {};
   render() {
@@ -21,6 +24,9 @@ class App extends Component {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/storage" element={<Storage />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     );
   }

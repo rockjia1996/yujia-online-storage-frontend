@@ -73,7 +73,7 @@ class Storage extends Component {
     return (
       <div>
         <NavBar
-          brandName="Mini Online Storage"
+          brandName={{ name: "Mini Online Storage", url: "/storage" }}
           navLinks={{
             Storage: "/storage",
             Settings: "/settings",
