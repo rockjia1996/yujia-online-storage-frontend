@@ -1,0 +1,10 @@
+{
+        "baseURL": "http://10.0.0.32:7777/",
+        "fileListAPI":"api/filelist" ,
+        "uploadAPI":"api/upload" ,
+        "downloadAPI":"api/download" ,
+        "deleteAPI":"api/delete" ,
+        "loginAPI": "api/login",
+        "registerAPI": "api/register"
+    
+}
