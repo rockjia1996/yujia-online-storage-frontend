@@ -32,7 +32,8 @@ class LoginForm extends Component {
           value={account.email}
           label="Email"
           name="email"
-          onChange={this.handleChange}
+          placeholder="Enter your email ..."
+          onChange={(e) => this.handleChange(e)}
         />
 
         {/* Password Input Field */}
@@ -41,7 +42,8 @@ class LoginForm extends Component {
           value={account.password}
           label="Password"
           name="password"
-          onChange={this.handleChange}
+          placeholder="Enter your password ..."
+          onChange={(e) => this.handleChange(e)}
         />
 
         {/* Submit Button*/}

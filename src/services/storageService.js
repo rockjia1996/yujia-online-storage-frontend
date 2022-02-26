@@ -11,7 +11,6 @@ const apiDownload = baseURL + config.downloadAPI;
 export async function getFileList() {
   http.setJwt(localStorage.getItem("token"));
   const { data } = await http.get(apiFileList);
-
   return data;
 }
 
@@ -25,9 +24,8 @@ export async function uploadFile(data) {
 
 export async function deleteFile(filename) {
   http.setJwt(localStorage.getItem("token"));
-  const response = await http.delete(apiDelete, {
-    data: { filename: filename },
-  });
+  const response = await http.delete(apiDelete + "/" + filename);
+  return response.data;
 }
 
 export async function downloadFile(filename) {

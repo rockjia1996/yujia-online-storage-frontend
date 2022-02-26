@@ -3,13 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 
 class Navbar extends Component {
   state = {};
+
   render() {
     const { brand, itemList } = this.props;
     return (
       <nav className="navbar stick-top navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           {this.renderBrand(brand)}
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">{this.renderItemList(itemList)}</div>
           </div>
         </div>
@@ -17,36 +18,26 @@ class Navbar extends Component {
     );
   }
 
+  // Helper method that helps render the brand based on props
   renderBrand(brand) {
     const { name, link } = brand;
     return (
       <React.Fragment>
-        <a className="navbar-brand" href={link}>
+        <Link className="navbar-brand" to={link}>
           {name}
-        </a>
-
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        </Link>
       </React.Fragment>
     );
   }
 
+  // Helper method that helps render the nav item based on the props
   renderItemList(itemList) {
     return itemList.map((item) => {
       return (
         <li key={item.name} className="nav-item">
-          <a className="nav-link" href={item.link}>
+          <NavLink className="nav-link" to={item.link}>
             {item.name}
-          </a>
+          </NavLink>
         </li>
       );
     });

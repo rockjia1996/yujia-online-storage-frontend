@@ -3,6 +3,7 @@ import Navbar from "../common/navbar";
 import LoginForm from "../loginForm";
 class Login extends Component {
   state = {};
+
   render() {
     return (
       <div>

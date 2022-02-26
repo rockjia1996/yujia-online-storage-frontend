@@ -44,7 +44,7 @@ class RegisterForm extends Component {
           value={account.username}
           label="Create Your Username"
           type="text"
-          onChange={this.handleChange}
+          onChange={(e) => this.handleChange}
         />
 
         <Input
@@ -52,7 +52,7 @@ class RegisterForm extends Component {
           value={account.email}
           label="Enter Your Email"
           type="email"
-          onChange={this.handleChange}
+          onChange={(e) => this.handleChange}
         />
 
         <Input
