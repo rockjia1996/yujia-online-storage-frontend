@@ -10,7 +10,7 @@ class RegisterForm extends Component {
       password: "",
       repeatedPassword: "",
     },
-    error: null,
+    errors: {},
   };
 
   handleChange = (e) => {
@@ -24,25 +24,25 @@ class RegisterForm extends Component {
 
     const newAccount = { ...this.state.account };
 
-    // Calling the backend server
-    console.log(newAccount);
-
     // Validate Inputs
     const { error: validateError } = registerValidate(newAccount);
+    const errorMessages = {};
+
     if (validateError) {
-      const errorMessage = validateError.details.map(
-        (detail) => detail.message
-      );
-      errorMessage.forEach((msg) => alert(msg));
+      for (let item of validateError.details)
+        errorMessages[item.path[0]] = item.message;
+      return this.setState({ errors: errorMessages || {} });
     }
 
+    // Calling the backend server
     const response = await register(newAccount);
-    console.log(response.data);
     const { isEmailUsed } = response.data;
     if (isEmailUsed) {
-      alert("The email has taken ! Please login");
-      window.location = "/register";
-      return;
+      const errorMessages = {
+        email: "Email has been used, please login with it",
+      };
+      console.log(errorMessages);
+      return this.setState({ errors: errorMessages || {} });
     }
     window.location = "/login";
   };
@@ -57,6 +57,7 @@ class RegisterForm extends Component {
           label="Create Your Username"
           type="text"
           onChange={this.handleChange}
+          error={this.state.errors["username"]}
         />
 
         <Input
@@ -65,6 +66,7 @@ class RegisterForm extends Component {
           label="Enter Your Email"
           type="email"
           onChange={this.handleChange}
+          error={this.state.errors["email"]}
         />
 
         <Input
@@ -73,6 +75,7 @@ class RegisterForm extends Component {
           label="Create Your Password"
           type="password"
           onChange={this.handleChange}
+          error={this.state.errors["password"]}
         />
 
         <div className="m-4">
@@ -91,6 +94,7 @@ class RegisterForm extends Component {
           label="Repeat Your Password"
           type="password"
           onChange={this.handleChange}
+          error={this.state.errors["repeatedPassword"]}
         />
 
         <div className="form-group m-4">

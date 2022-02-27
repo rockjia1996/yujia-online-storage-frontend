@@ -5,7 +5,7 @@ import { loginValidate } from "../services/validateService";
 class LoginForm extends Component {
   state = {
     account: { email: "", password: "" },
-    loginError: { emailError: "", passwordError: "" },
+    errors: {},
   };
 
   handleChange = (e) => {
@@ -19,23 +19,33 @@ class LoginForm extends Component {
 
     const userAccount = { ...this.state.account };
 
-    // Calling the backend server
-    const { error: validateError } = loginValidate({
-      email: userAccount.email,
-      password: userAccount.password,
-    });
+    // Validate Inputs
+    const { error: validateError } = loginValidate(userAccount);
+    const errorMessages = {};
 
-    if (validateError) alert(validateError.details[0].message);
+    if (validateError) {
+      for (let item of validateError.details)
+        errorMessages[item.path[0]] = item.message;
+      console.log(errorMessages);
+      return this.setState({ errors: errorMessages || {} });
+    }
+
+    // Calling the backend server
 
     const loginFeedback = await login(userAccount.email, userAccount.password);
 
-    if (loginFeedback.isAuth === false)
-      return alert("Please enter the correct email and password");
+    if (loginFeedback.isAuth === false) {
+      const errorMessages = {
+        email: "Invalid Email",
+        password: "Invalid Password",
+      };
+      return this.setState({ errors: errorMessages || {} });
+    }
     window.location = "/storage";
   };
 
   render() {
-    const { account } = this.state;
+    const { account, errors } = this.state;
     return (
       <form className="container">
         {/* Email Input Field*/}
@@ -46,6 +56,7 @@ class LoginForm extends Component {
           name="email"
           placeholder="Enter your email ..."
           onChange={(e) => this.handleChange(e)}
+          error={errors["email"]}
         />
 
         {/* Password Input Field */}
@@ -56,6 +67,7 @@ class LoginForm extends Component {
           name="password"
           placeholder="Enter your password ..."
           onChange={(e) => this.handleChange(e)}
+          error={errors["password"]}
         />
 
         {/* Submit Button*/}
