@@ -3,17 +3,27 @@ import Navbar from "../common/navbar";
 class NotFound extends Component {
   state = {};
   render() {
-    return (
-      <div>
-        <Navbar
-          brand={{ name: "Mini Online Storage", link: "/" }}
-          itemList={[
+    const itemList =
+      this.props.user && localStorage.getItem("token")
+        ? [
+            { name: "Home", link: "/" },
+            { name: "Updates", link: "/updates" },
+            { name: "Storage", link: "/storage" },
+            { name: "About", link: "/about" },
+          ]
+        : [
             { name: "Home", link: "/" },
             { name: "Updates", link: "/updates" },
             { name: "Login", link: "/login" },
             { name: "Register", link: "/register" },
             { name: "About", link: "/about" },
-          ]}
+          ];
+
+    return (
+      <div>
+        <Navbar
+          brand={{ name: "Mini Online Storage", link: "/" }}
+          itemList={itemList}
         />
 
         <div className="container m-4">

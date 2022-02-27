@@ -26,11 +26,11 @@ class App extends Component {
   render() {
     return (
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/updates" element={<Updates />} />
+        <Route path="/" element={<Home user={this.state.user} />} />
+        <Route path="/updates" element={<Updates user={this.state.user} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About user={this.state.user} />} />
 
         {/* Protected Application Route */}
         <Route element={<ProtectedRoute user={this.state.user} />}>

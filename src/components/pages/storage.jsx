@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import FileTable from "../fileTable";
 import {
   deleteFile,
@@ -13,14 +14,14 @@ import Pagination from "../common/pagination";
 import { paginate } from "../../utils/paginate";
 import FileSelect from "../fileSelect";
 import Dashboard from "../Dashboard";
-import Account from "../account";
+import AccountWrapper from "../accountWrapper";
 
 class Storage extends Component {
   state = {
     fileList: [],
     searchQuery: "",
     currentPage: 1,
-    entriesPerPage: 4,
+    entriesPerPage: 7,
     loadStorage: true,
     loadDashboard: false,
     loadAccount: false,
@@ -44,6 +45,16 @@ class Storage extends Component {
     const file = input.files[0];
     const formData = new FormData();
     formData.append("uploaded_file", file);
+
+    // Calculate the usage of the disk space
+    const usage = orginalList.reduce(
+      (acc, currentFile) => acc + currentFile.size,
+      0
+    );
+    const free = 100000000 - usage;
+
+    // If no enough space, alert user and terminate the upload
+    if (free <= 0 || free <= file.size) return alert("No Enough Free Space");
 
     try {
       const uploaded = await uploadFile(formData);
@@ -120,7 +131,7 @@ class Storage extends Component {
           value={this.state.searchQuery}
           onChange={this.handleSearch}
         />
-        <p>Showing {list.length} item(s)</p>
+        <p>Showing {listDetails.totalItems} item(s)</p>
         <FileTable
           entries={list}
           onDelete={this.handleFileDelete}
@@ -140,7 +151,7 @@ class Storage extends Component {
   };
 
   renderAccount = () => {
-    return <Account />;
+    return <AccountWrapper user={this.props.user} />;
   };
 
   renderMain = () => {
@@ -157,11 +168,11 @@ class Storage extends Component {
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={[
             { name: "Home", link: "/" },
+            { name: "Storage", link: "/storage" },
             { name: "Updates", link: "/updates" },
             { name: "About", link: "/about" },
           ]}
         />
-
         <div className="container">
           <div className="row">
             <div className="col my-4">

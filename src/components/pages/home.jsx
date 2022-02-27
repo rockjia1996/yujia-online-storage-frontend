@@ -2,22 +2,31 @@ import React, { Component } from "react";
 import Navbar from "../common/navbar";
 import SiteFooter from "../siteFooter";
 const imagePlaceholder = require("../../resources/image-not-found.png");
-const siteLogo = require("../../resources/site-logo.png");
 
 class Home extends Component {
   state = {};
   render() {
-    return (
-      <div>
-        <Navbar
-          brand={{ name: "Mini Online Storage", link: "/" }}
-          itemList={[
+    const itemList =
+      this.props.user && localStorage.getItem("token")
+        ? [
+            { name: "Home", link: "/" },
+            { name: "Storage", link: "/storage" },
+            { name: "Updates", link: "/updates" },
+            { name: "About", link: "/about" },
+          ]
+        : [
             { name: "Home", link: "/" },
             { name: "Updates", link: "/updates" },
             { name: "Login", link: "/login" },
             { name: "Register", link: "/register" },
             { name: "About", link: "/about" },
-          ]}
+          ];
+
+    return (
+      <div>
+        <Navbar
+          brand={{ name: "Mini Online Storage", link: "/" }}
+          itemList={itemList}
         />
         {/* Header Section */}
         <div className="header">
@@ -32,7 +41,7 @@ class Home extends Component {
         {/* Subsection */}
         <div className="section">
           <div className="sub-section">
-            <img src={imagePlaceholder} />
+            <img src={imagePlaceholder} alt="" />
           </div>
           <div className="sub-section">
             <h2>Freely upload your personal or work files</h2>
@@ -57,14 +66,14 @@ class Home extends Component {
             </p>
           </div>
           <div className="sub-section">
-            <img src={imagePlaceholder} />
+            <img src={imagePlaceholder} alt="" />
           </div>
         </div>
 
         {/* Wrap Up Section */}
         <div className="section">
           <div className="sub-section">
-            <img src={imagePlaceholder} />
+            <img src={imagePlaceholder} alt="" />
           </div>
           <div className="sub-section">
             <h2>It's Free and Open Source!</h2>

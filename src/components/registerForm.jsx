@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "./common/input";
 import { register } from "../services/userService";
+import { registerValidate } from "../services/validateService";
 class RegisterForm extends Component {
   state = {
     account: {
@@ -25,10 +26,21 @@ class RegisterForm extends Component {
 
     // Calling the backend server
     console.log(newAccount);
+
+    // Validate Inputs
+    const { error: validateError } = registerValidate(newAccount);
+    if (validateError) {
+      const errorMessage = validateError.details.map(
+        (detail) => detail.message
+      );
+      errorMessage.forEach((msg) => alert(msg));
+    }
+
     const response = await register(newAccount);
     console.log(response.data);
     const { isEmailUsed } = response.data;
     if (isEmailUsed) {
+      alert("The email has taken ! Please login");
       window.location = "/register";
       return;
     }
@@ -44,7 +56,7 @@ class RegisterForm extends Component {
           value={account.username}
           label="Create Your Username"
           type="text"
-          onChange={(e) => this.handleChange}
+          onChange={this.handleChange}
         />
 
         <Input
@@ -52,7 +64,7 @@ class RegisterForm extends Component {
           value={account.email}
           label="Enter Your Email"
           type="email"
-          onChange={(e) => this.handleChange}
+          onChange={this.handleChange}
         />
 
         <Input

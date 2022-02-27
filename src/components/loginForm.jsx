@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Input from "./common/input";
 import { login } from "../services/authService";
+import { loginValidate } from "../services/validateService";
 class LoginForm extends Component {
   state = {
     account: { email: "", password: "" },
+    loginError: { emailError: "", passwordError: "" },
   };
 
   handleChange = (e) => {
@@ -18,7 +20,17 @@ class LoginForm extends Component {
     const userAccount = { ...this.state.account };
 
     // Calling the backend server
-    await login(userAccount.email, userAccount.password);
+    const { error: validateError } = loginValidate({
+      email: userAccount.email,
+      password: userAccount.password,
+    });
+
+    if (validateError) alert(validateError.details[0].message);
+
+    const loginFeedback = await login(userAccount.email, userAccount.password);
+
+    if (loginFeedback.isAuth === false)
+      return alert("Please enter the correct email and password");
     window.location = "/storage";
   };
 
