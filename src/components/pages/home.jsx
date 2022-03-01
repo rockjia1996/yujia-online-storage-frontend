@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Navbar from "../common/navbar";
 import SiteFooter from "../siteFooter";
-const imagePlaceholder = require("../../resources/image-not-found.png");
+const fileTableImage = require("../../resources/screenshot-filetable.png");
+const managmentImage = require("../../resources/screenshot-managment.png");
 
 class Home extends Component {
   state = {};
@@ -39,9 +40,9 @@ class Home extends Component {
         </div>
 
         {/* Subsection */}
-        <div className="section">
+        <div className="section bg-beige">
           <div className="sub-section">
-            <img src={imagePlaceholder} alt="" />
+            <img src={fileTableImage} alt="" />
           </div>
           <div className="sub-section">
             <h2>Freely upload your personal or work files</h2>
@@ -55,27 +56,23 @@ class Home extends Component {
         </div>
 
         {/* Subsection */}
-        <div className="section">
+        <div className="section bg-sky-blue">
           <div className="sub-section">
             <h2>Search and Organize your downloads</h2>
             <p>
-              Mini Online Storage allows you to pack your files when
-              downloading. So no need to download each indiviual file
-              sepreately. Also you can search your files based on the different
-              contraint that you provided.
+              Mini Online Storage allows you to manage your files with ease. You
+              can track your avaible free space by broswing the build-in
+              dashboard in the sidebar.
             </p>
           </div>
           <div className="sub-section">
-            <img src={imagePlaceholder} alt="" />
+            <img src={managmentImage} alt="" />
           </div>
         </div>
 
         {/* Wrap Up Section */}
-        <div className="section">
-          <div className="sub-section">
-            <img src={imagePlaceholder} alt="" />
-          </div>
-          <div className="sub-section">
+        <div className="section bg-pale-blue">
+          <div className="sub-section" style={{ width: "100%" }}>
             <h2>It's Free and Open Source!</h2>
 
             <p>

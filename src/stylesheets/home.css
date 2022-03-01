@@ -11,6 +11,18 @@ a {
   color: plum;
 }
 
+.bg-sky-blue {
+  background-color: #93bdec;
+}
+
+.bg-pale-blue {
+  background-color: #bedcf5;
+}
+
+.bg-beige {
+  background-color: #e0e8d6;
+}
+
 .header {
   padding: 60px;
   text-align: left;
