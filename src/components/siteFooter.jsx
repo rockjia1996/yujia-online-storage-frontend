@@ -9,7 +9,7 @@ class SiteFooter extends Component {
           <h3>About Project</h3>
           <ul>
             <li>
-              <a href="#">Project Report</a>
+              <a href="/about">Project Report</a>
             </li>
             <li>
               <a href="https://github.com/rockjia1996?tab=repositories">

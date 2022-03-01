@@ -62,7 +62,9 @@ class Storage extends Component {
       uploaded.date = convertedDate.toDateString();
       const updatedList = [...orginalList, uploaded];
       this.setState({ fileList: updatedList });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   handleFileDelete = async (filename) => {

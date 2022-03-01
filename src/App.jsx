@@ -11,7 +11,6 @@ import About from "./components/pages/about";
 import Storage from "./components/pages/storage";
 import NotFound from "./components/pages/notFound";
 import ProtectedRoute from "./components/common/protectedRoute";
-import { process } from "joi-browser";
 
 class App extends Component {
   state = {};
