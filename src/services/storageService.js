@@ -1,7 +1,10 @@
 import http from "./httpService";
 import config from "../config/default.json";
 
-const baseURL = config.baseURL;
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_DEV_API_URL
+    : process.env.REACT_APP_DEV_BUILD_URL;
 
 const apiFileList = baseURL + config.fileListAPI;
 const apiUpload = baseURL + config.uploadAPI;

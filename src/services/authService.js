@@ -1,8 +1,13 @@
 import http from "./httpService";
 
 import config from "../config/default.json";
+import { process } from "joi-browser";
 
-const apiEndPoint = config.baseURL + config.loginAPI;
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_DEV_API_URL
+    : process.env.REACT_APP_DEV_BUILD_URL;
+const apiEndPoint = baseURL + config.loginAPI;
 
 const tokenKey = "token";
 
