@@ -1,8 +1,9 @@
 .register-header {
-  background: #d6e1d2;
   padding: 60px 60px;
-  font-size: 30px;
-  height: 20vh;
-  min-height: 400px;
   text-align: center;
+  background: #d6e1d2;
+  color: black;
+  font-size: 15px;
+  height: 30rem;
+  min-height: 23rem;
 }

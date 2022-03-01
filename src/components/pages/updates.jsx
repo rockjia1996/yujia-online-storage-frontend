@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../common/navbar";
+import CustomNavbar from "../common/customNavbar";
 
 class Updates extends Component {
   state = {};
@@ -22,7 +22,7 @@ class Updates extends Component {
 
     return (
       <div>
-        <Navbar
+        <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={itemList}
         />

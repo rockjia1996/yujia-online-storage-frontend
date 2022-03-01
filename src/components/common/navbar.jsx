@@ -7,10 +7,23 @@ class Navbar extends Component {
   render() {
     const { brand, itemList } = this.props;
     return (
-      <nav className="navbar stick-top navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           {this.renderBrand(brand)}
-          <div className="navbar-collapse" id="navbarNavAltMarkup">
+
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbar">
             <div className="navbar-nav">{this.renderItemList(itemList)}</div>
           </div>
         </div>

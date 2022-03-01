@@ -7,7 +7,6 @@ import {
   getFileList,
   uploadFile,
 } from "../../services/storageService";
-import Navbar from "../common/navbar";
 import SearchBar from "../common/searchBar";
 import Sidebar from "../sidebar";
 import Pagination from "../common/pagination";
@@ -15,6 +14,7 @@ import { paginate } from "../../utils/paginate";
 import FileSelect from "../fileSelect";
 import Dashboard from "../Dashboard";
 import AccountWrapper from "../accountWrapper";
+import CustomNavbar from "../common/customNavbar";
 
 class Storage extends Component {
   state = {
@@ -166,7 +166,7 @@ class Storage extends Component {
   render() {
     return (
       <div>
-        <Navbar
+        <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={[
             { name: "Home", link: "/" },

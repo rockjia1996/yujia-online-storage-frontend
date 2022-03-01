@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../common/navbar";
-
+import CustomNavbar from "../common/customNavbar";
 class About extends Component {
   state = {};
   render() {
@@ -22,7 +21,7 @@ class About extends Component {
 
     return (
       <div>
-        <Navbar
+        <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={itemList}
         />

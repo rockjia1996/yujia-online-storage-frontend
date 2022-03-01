@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../common/navbar";
+import CustomNavbar from "../common/customNavbar";
 class NotFound extends Component {
   state = {};
   render() {
@@ -21,7 +21,7 @@ class NotFound extends Component {
 
     return (
       <div>
-        <Navbar
+        <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={itemList}
         />

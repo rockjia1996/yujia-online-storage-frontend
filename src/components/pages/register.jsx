@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../common/navbar";
+import CustomNavbar from "../common/customNavbar";
 import RegisterForm from "../registerForm";
 
 class Register extends Component {
@@ -7,7 +7,7 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <Navbar
+        <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={[
             { name: "Home", link: "/" },

@@ -38,10 +38,14 @@ class SiteFooter extends Component {
           </ul>
         </div>
         <div>
-          <h3>Contact Developer</h3>
+          <h3>Contact Dev</h3>
           <ul>
-            <li>Phone: (314)-546-1998</li>
-            <li>Email: rockjia1996@gmail.com</li>
+            <li>
+              <a>Phone: (314)-546-1998 </a>
+            </li>
+            <li>
+              <a>Email: rockjia1996@gmail.com</a>
+            </li>
           </ul>
         </div>
       </div>

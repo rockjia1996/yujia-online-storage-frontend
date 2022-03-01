@@ -1,0 +1,18 @@
+.footer {
+  padding: 50px 50px;
+  min-height: 300px;
+  background-color: #603587;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 512px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}

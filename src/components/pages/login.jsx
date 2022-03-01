@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../common/navbar";
+import CustomNavbar from "../common/customNavbar";
 import LoginForm from "../loginForm";
 class Login extends Component {
   state = {};
@@ -7,7 +7,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Navbar
+        <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={[
             { name: "Home", link: "/" },
