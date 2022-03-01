@@ -6,7 +6,7 @@ import { process } from "joi-browser";
 const baseURL =
   process.env.NODE_ENV === "development"
     ? process.env.REACT_APP_DEV_API_URL
-    : process.env.REACT_APP_DEV_BUILD_URL;
+    : process.env.REACT_APP_BUILD_API_URL;
 const apiEndPoint = baseURL + config.loginAPI;
 
 const tokenKey = "token";
