@@ -27,8 +27,9 @@ class About extends Component {
           itemList={itemList}
         />
 
-        <div className="container">
+        <div className="container m-5 p-4">
           {/* About the Site and Developer */}
+
           <table className="table m-4">
             <thead>
               <tr>
