@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { toast } from "react-toastify";
+
 import FileTable from "../fileTable";
 import {
   deleteFile,
@@ -54,7 +59,11 @@ class Storage extends Component {
     const free = 100000000 - usage;
 
     // If no enough space, alert user and terminate the upload
-    if (free <= 0 || free <= file.size) return alert("No Enough Free Space");
+    if (free <= 0 || free <= file.size)
+      return toast.error("No Enough Free Space");
+
+    if (file.size > 10000000)
+      return toast.error("Exceed File Size Limit 10 Mb");
 
     try {
       const uploaded = await uploadFile(formData);
@@ -128,6 +137,7 @@ class Storage extends Component {
 
     return (
       <React.Fragment>
+        <ToastContainer />
         <FileSelect onUpload={this.handleFileUpload} />
         <SearchBar
           value={this.state.searchQuery}

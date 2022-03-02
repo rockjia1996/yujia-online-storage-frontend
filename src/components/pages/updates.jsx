@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CustomNavbar from "../common/customNavbar";
-
 class Updates extends Component {
   state = {};
   render() {

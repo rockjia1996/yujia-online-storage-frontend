@@ -109,7 +109,7 @@ class About extends Component {
                   <p>Frontend</p>
                   <p>
                     fontawesome, axios, bootstrap, jow-browser, jwt-decode,
-                    lodash, react-bootstrap, react-router-dom
+                    lodash, react-bootstrap, react-router-dom, react-toastify
                   </p>
                 </td>
               </tr>
