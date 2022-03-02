@@ -6,7 +6,7 @@ class CustomNavbar extends Component {
   render() {
     const { brand, itemList } = this.props;
     return (
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar fixed="top" bg="dark" variant="dark" expand="lg">
         {this.renderBrand(brand)}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

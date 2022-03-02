@@ -26,6 +26,7 @@ class Home extends Component {
 
     return (
       <div>
+        {/* Navbar for the homepage*/}
         <CustomNavbar
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={itemList}
@@ -97,7 +98,7 @@ class Home extends Component {
               <a href="https://github.com/rockjia1996/yujia-online-storage-frontend.git">
                 frontend
               </a>
-              /
+              &nbsp; / &nbsp;
               <a href="https://github.com/rockjia1996/yujia-online-storage-backend.git">
                 backend
               </a>
