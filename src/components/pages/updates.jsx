@@ -25,7 +25,7 @@ class Updates extends Component {
           brand={{ name: "Mini Online Storage", link: "/" }}
           itemList={itemList}
         />
-        <div className="container">
+        <div className="container m-4 p-5">
           <table className="table m-4">
             <thead>
               <tr>

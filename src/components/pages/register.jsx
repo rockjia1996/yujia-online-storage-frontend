@@ -19,7 +19,7 @@ class Register extends Component {
         />
 
         <div
-          className="d-flex flex-column justify-content-between"
+          className="d-flex flex-column justify-content-between my-4 py-4"
           style={{ height: "100vh" }}
         >
           <div className="register-header">

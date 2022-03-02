@@ -26,7 +26,7 @@ class NotFound extends Component {
           itemList={itemList}
         />
 
-        <div className="container m-4">
+        <div className="container m-4 p-5">
           <h1>Page Not Found</h1>
           <p>The page that you are looking for is not exist!</p>
         </div>

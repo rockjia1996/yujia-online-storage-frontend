@@ -185,7 +185,7 @@ class Storage extends Component {
             { name: "About", link: "/about" },
           ]}
         />
-        <div className="container">
+        <div className="container m-4 p-5">
           <div className="row">
             <div className="col my-4">
               <Sidebar

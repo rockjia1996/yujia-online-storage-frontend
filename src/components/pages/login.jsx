@@ -19,7 +19,7 @@ class Login extends Component {
         />
 
         <div
-          className="d-flex flex-column justify-content-between"
+          className="d-flex flex-column justify-content-between my-4 py-3"
           style={{ height: "100vh" }}
         >
           {/* Heading Section */}
